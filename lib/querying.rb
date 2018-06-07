@@ -42,7 +42,8 @@ end
 
 def select_series_title_with_most_human_characters
   <<-SQL
-    SELECT series.title AS series_with_most_humans FROM series
+    SELECT series.title AS series_with_most_humans 
+    FROM series
     INNER JOIN characters ON series.id = characters.series_id
     WHERE characters.species = 'human'
     GROUP BY series.title
@@ -54,7 +55,7 @@ end
 def select_character_names_and_number_of_books_they_are_in
   <<-SQL
     SELECT characters.name AS character_name,
-           COUNT(books.id) AS number_of_books_appeared_in
+           COUNT(*) AS number_of_books_appeared_in
     FROM characters
     INNER JOIN character_books ON characters.id = character_books.character_id
     INNER JOIN books ON books.id = character_books.book_id
