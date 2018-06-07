@@ -1,7 +1,7 @@
 def select_books_titles_and_years_in_first_series_order_by_year
   <<-SQL
-    SELECT books.title, 
-          books.year
+    SELECT title, 
+           year
     FROM books
     WHERE series_id = 1
     ORDER BY year;
@@ -10,10 +10,10 @@ end
 
 def select_name_and_motto_of_char_with_longest_motto
   <<-SQL
-    SELECT characters.name AS character_name,
-          characters.motto AS longest_motto
+    SELECT name AS character_name,
+           motto AS longest_motto
     FROM characters
-    ORDER BY LENGTH(characters.motto) DESC
+    ORDER BY LENGTH(motto) DESC
     LIMIT 1;
   SQL
 end
@@ -21,10 +21,10 @@ end
 
 def select_value_and_count_of_most_prolific_species
   <<-SQL
-    SELECT characters.species,
-           COUNT(characters.species) AS number_of_appearances
+    SELECT species,
+           COUNT(species) AS number_of_appearances
     FROM characters
-    GROUP BY characters.species
+    GROUP BY species
     ORDER BY number_of_appearances DESC
     LIMIT 1;
   SQL
