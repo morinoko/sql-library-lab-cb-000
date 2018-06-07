@@ -22,7 +22,7 @@ end
 def select_value_and_count_of_most_prolific_species
   <<-SQL
     SELECT species,
-           COUNT(species) AS number_of_appearances
+           COUNT(*) AS number_of_appearances
     FROM characters
     GROUP BY species
     ORDER BY number_of_appearances DESC
